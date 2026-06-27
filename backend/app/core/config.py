@@ -11,10 +11,19 @@ class Settings(BaseSettings):
     HOST: str
     PORT: int
 
+    ALLOWED_ORIGINS: str
+
     model_config = SettingsConfigDict(
         env_file=".env",
-        extra="ignore"
+        extra="ignore",
     )
+
+    @property
+    def cors_origins(self) -> list[str]:
+        return [
+            origin.strip()
+            for origin in self.ALLOWED_ORIGINS.split(",")
+        ]
 
 
 settings = Settings()
