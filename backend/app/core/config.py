@@ -5,6 +5,7 @@ class Settings(BaseSettings):
     APP_NAME: str
     APP_VERSION: str
     API_PREFIX: str
+    
 
     DEBUG: bool
 
@@ -12,6 +13,7 @@ class Settings(BaseSettings):
     PORT: int
 
     ALLOWED_ORIGINS: str
+    DATABASE_URL: str
 
     model_config = SettingsConfigDict(
         env_file=".env",
